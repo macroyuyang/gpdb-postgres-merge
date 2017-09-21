@@ -1314,7 +1314,7 @@ jobs:
     file: gpdb_src/concourse/tasks/ic_gpdb_binary_swap.yml
     image: centos-gpdb-dev-6
     params:
-      MAKE_TEST_COMMAND: PGOPTIONS='-c optimizer=off' installcheck-world
+      MAKE_TEST_COMMAND: -k PGOPTIONS='-c optimizer=off' installcheck-world
       BLDWRAP_POSTGRES_CONF_ADDONS: "fsync=off"
       TEST_OS: centos
       TEST_BINARY_SWAP: false
@@ -1333,7 +1333,7 @@ jobs:
     file: gpdb_src/concourse/tasks/ic_gpdb.yml
     image: centos-gpdb-dev-6
     params:
-      MAKE_TEST_COMMAND: PGOPTIONS='-c optimizer=on' installcheck-world
+      MAKE_TEST_COMMAND: -k PGOPTIONS='-c optimizer=on' installcheck-world
       BLDWRAP_POSTGRES_CONF_ADDONS: "fsync=off"
       TEST_OS: centos
       CONFIGURE_FLAGS: {{configure_flags}}
@@ -1351,7 +1351,7 @@ jobs:
     file: gpdb_src/concourse/tasks/ic_gpdb.yml
     image: centos-gpdb-dev-7
     params:
-      MAKE_TEST_COMMAND: PGOPTIONS='-c optimizer=on' installcheck-world
+      MAKE_TEST_COMMAND: -k PGOPTIONS='-c optimizer=on' installcheck-world
       BLDWRAP_POSTGRES_CONF_ADDONS: "fsync=off"
       TEST_OS: centos
       CONFIGURE_FLAGS: {{configure_flags}}
@@ -1367,7 +1367,7 @@ jobs:
   - task: ic_gpdb
     file: gpdb_src/concourse/tasks/ic_gpdb_sles11.yml
     params:
-      MAKE_TEST_COMMAND: PGOPTIONS='-c optimizer=on' installcheck-world
+      MAKE_TEST_COMMAND: -k PGOPTIONS='-c optimizer=on' installcheck-world
       BLDWRAP_POSTGRES_CONF_ADDONS: "fsync=off"
       TEST_OS: sles
       CONFIGURE_FLAGS: {{configure_flags}}
@@ -1384,7 +1384,7 @@ jobs:
     file: gpdb_src/concourse/tasks/ic_gpdb_ubuntu.yml
     image: ubuntu-gpdb-dev-16
     params:
-      MAKE_TEST_COMMAND: PGOPTIONS='-c optimizer=off' installcheck-world
+      MAKE_TEST_COMMAND: -k PGOPTIONS='-c optimizer=off' installcheck-world
       CONFIGURE_FLAGS: {{configure_flags}}
 - name: icw_gporca_conan_ubuntu16
   plan:
@@ -1421,7 +1421,7 @@ jobs:
     file: gpdb_src/concourse/tasks/ic_gpdb.yml
     image: centos-gpdb-dev-6
     params:
-      MAKE_TEST_COMMAND: PGOPTIONS='-c optimizer=on' installcheck-world
+      MAKE_TEST_COMMAND: -k PGOPTIONS='-c optimizer=on' installcheck-world
       BLDWRAP_POSTGRES_CONF_ADDONS: "fsync=off | optimizer_use_gpdb_allocators=on"
       TEST_OS: centos
       CONFIGURE_FLAGS: {{configure_flags}}
@@ -1439,7 +1439,7 @@ jobs:
     file: gpdb_src/concourse/tasks/ic_gpdb.yml
     image: centos-gpdb-dev-6
     params:
-      MAKE_TEST_COMMAND: PGOPTIONS='-c gp_interconnect_type=tcp -c optimizer=off' installcheck-world
+      MAKE_TEST_COMMAND: -k PGOPTIONS='-c gp_interconnect_type=tcp -c optimizer=off' installcheck-world
       BLDWRAP_POSTGRES_CONF_ADDONS: "fsync=off"
       TEST_OS: centos
 - name: fts
@@ -1458,7 +1458,7 @@ jobs:
       file: gpdb_src/concourse/tasks/tinc_gpdb.yml
       image: centos-gpdb-dev-6
       params:
-        MAKE_TEST_COMMAND: fts_transitions_part01
+        MAKE_TEST_COMMAND: -k fts_transitions_part01
         BLDWRAP_POSTGRES_CONF_ADDONS: gp_segment_connect_timeout=35 gp_fts_probe_interval=20
         TEST_OS: centos
         CONFIGURE_FLAGS: {{configure_flags}}
@@ -1466,7 +1466,7 @@ jobs:
       file: gpdb_src/concourse/tasks/tinc_gpdb.yml
       image: centos-gpdb-dev-6
       params:
-        MAKE_TEST_COMMAND: fts_transitions_part02
+        MAKE_TEST_COMMAND: -k fts_transitions_part02
         BLDWRAP_POSTGRES_CONF_ADDONS: gp_segment_connect_timeout=35 gp_fts_probe_interval=20
         TEST_OS: centos
         CONFIGURE_FLAGS: {{configure_flags}}
@@ -1474,7 +1474,7 @@ jobs:
       file: gpdb_src/concourse/tasks/tinc_gpdb.yml
       image: centos-gpdb-dev-6
       params:
-        MAKE_TEST_COMMAND: fts_transitions_part03
+        MAKE_TEST_COMMAND: -k fts_transitions_part03
         BLDWRAP_POSTGRES_CONF_ADDONS: gp_segment_connect_timeout=35 gp_fts_probe_interval=20
         TEST_OS: centos
         CONFIGURE_FLAGS: {{configure_flags}}
@@ -1493,7 +1493,7 @@ jobs:
     - task: aocoalter_catalog_loaders
       file: gpdb_src/concourse/tasks/tinc_gpdb.yml
       params:
-        MAKE_TEST_COMMAND: aocoalter_catalog_loaders
+        MAKE_TEST_COMMAND: -k aocoalter_catalog_loaders
         BLDWRAP_POSTGRES_CONF_ADDONS: "fsync=off"
         TEST_OS: centos
         CONFIGURE_FLAGS: {{configure_flags}}
@@ -1501,7 +1501,7 @@ jobs:
     - task: storage_persistent_accessmethods_and_vacuum
       file: gpdb_src/concourse/tasks/tinc_gpdb.yml
       params:
-        MAKE_TEST_COMMAND: storage_persistent_accessmethods_and_vacuum
+        MAKE_TEST_COMMAND: -k storage_persistent_accessmethods_and_vacuum
         BLDWRAP_POSTGRES_CONF_ADDONS: "fsync=off"
         TEST_OS: centos
         CONFIGURE_FLAGS: {{configure_flags}}
@@ -1510,7 +1510,7 @@ jobs:
     - task: storage_filerep
       file: gpdb_src/concourse/tasks/tinc_gpdb.yml
       params:
-        MAKE_TEST_COMMAND: storage_filerep
+        MAKE_TEST_COMMAND: -k storage_filerep
         BLDWRAP_POSTGRES_CONF_ADDONS: "fsync=off"
         TEST_OS: centos
         CONFIGURE_FLAGS: {{configure_flags}}
@@ -1519,7 +1519,7 @@ jobs:
     - task: storage_uao_transactionmanagement
       file: gpdb_src/concourse/tasks/tinc_gpdb.yml
       params:
-        MAKE_TEST_COMMAND: storage_uao_and_transactionmanagement
+        MAKE_TEST_COMMAND: -k storage_uao_and_transactionmanagement
         BLDWRAP_POSTGRES_CONF_ADDONS: "fsync=off"
         TEST_OS: centos
         CONFIGURE_FLAGS: {{configure_flags}}
@@ -1528,7 +1528,7 @@ jobs:
     - task: storage_vacuum_xidlimits
       file: gpdb_src/concourse/tasks/tinc_gpdb.yml
       params:
-        MAKE_TEST_COMMAND: storage_vacuum_xidlimits
+        MAKE_TEST_COMMAND: -k storage_vacuum_xidlimits
         BLDWRAP_POSTGRES_CONF_ADDONS: "fsync=off"
         TEST_OS: centos
         CONFIGURE_FLAGS: {{configure_flags}}
@@ -2442,7 +2442,7 @@ jobs:
       file: gpdb_src/concourse/tasks/tinc_gpdb.yml
       image: centos-gpdb-dev-6
       params:
-        MAKE_TEST_COMMAND: persistent_table_rebuild
+        MAKE_TEST_COMMAND: -k persistent_table_rebuild
         TEST_OS: centos
         CONFIGURE_FLAGS: {{configure_flags}}
 - name: MM_gpinitsystem
@@ -2820,7 +2820,7 @@ jobs:
     file: gpdb_src/concourse/tasks/tinc_gpdb.yml
     image: centos-gpdb-dev-6
     params:
-      MAKE_TEST_COMMAND: memory_accounting
+      MAKE_TEST_COMMAND: -k memory_accounting
       TEST_OS: "centos"
       CONFIGURE_FLAGS: {{configure_flags}}
 - name: regression_tests_pxf_hdp_rpm
