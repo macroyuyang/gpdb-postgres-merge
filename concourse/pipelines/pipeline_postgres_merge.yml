@@ -2263,14 +2263,7 @@ jobs:
   - aggregate:
     - get: gpdb_src
       passed:
-      - DPM_gptransfer
       - DPM_backup-restore
-      - mpp_interconnect
-      - cs_crash_recovery_schema_topology
-      - cs_crash_recovery_04_10
-      - cs_crash_recovery_11_20
-      - cs_crash_recovery_21_30
-      - cs_crash_recovery_31_42
       trigger: true
     - get: bin_gpdb_centos6
       passed:
@@ -2730,8 +2723,6 @@ jobs:
     - get: gpdb_src
       trigger: true
       passed:
-      - MM_gpexpand_1
-      - MM_gpexpand_2
       - DPM_gptransfer_43x_to_master
 ############### Nightly End
 
