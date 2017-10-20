@@ -704,11 +704,11 @@ cs_ccp_aggregate_nightly_start_anchor: &cs_ccp_aggregate_nightly_start
 cs_ccp_aggregate_cluster_start_anchor: &cs_ccp_aggregate_cluster_start
   - get: gpdb_src
     tags: ["ccp"]
-    passed: [gate_cluster_start]
+    passed: [gate_compile_end]
   - get: gpdb_binary
     tags: ["ccp"]
     resource: bin_gpdb_centos6
-    passed: [gate_cluster_start]
+    passed: [gate_compile_end]
     trigger: true
   - get: ccp_src
     tags: ["ccp"]
@@ -2481,27 +2481,11 @@ jobs:
   - aggregate:
     - get: gpdb_src
       passed:
-      - MU_check_centos
-      - MM_analyzedb
-      - MM_gpinitsystem
-      - MM_gpperfmon
-      - MM_gpcheck
-      - MM_pt-rebuild
-      - MM_gpinitstandby
       - MM_gppkg
-      - MM_gprecoverseg
       trigger: true
     - get: bin_gpdb_centos6
       passed:
-      - MU_check_centos
-      - MM_analyzedb
-      - MM_gpinitsystem
-      - MM_gpperfmon
-      - MM_gpcheck
-      - MM_pt-rebuild
-      - MM_gpinitstandby
       - MM_gppkg
-      - MM_gprecoverseg
     # Not used by icw group, but is passed through
     - get: bin_gpdb_centos7
       passed:
@@ -3074,11 +3058,11 @@ jobs:
   - aggregate:
     - get: gpdb_src
       tags: ["ccp"]
-      passed: [gate_filerep_start]
+      passed: [gate_compile_end]
     - get: gpdb_binary
       tags: ["ccp"]
       resource: bin_gpdb_centos6
-      passed: [gate_filerep_start]
+      passed: [gate_compile_end]
       trigger: true
     - get: ccp_src
       tags: ["ccp"]
@@ -3114,11 +3098,11 @@ jobs:
   - aggregate:
     - get: gpdb_src
       tags: ["ccp"]
-      passed: [gate_filerep_start]
+      passed: [gate_compile_end]
     - get: gpdb_binary
       tags: ["ccp"]
       resource: bin_gpdb_centos6
-      passed: [gate_filerep_start]
+      passed: [gate_compile_end]
       trigger: true
     - get: ccp_src
       tags: ["ccp"]
@@ -3154,11 +3138,11 @@ jobs:
   - aggregate:
     - get: gpdb_src
       tags: ["ccp"]
-      passed: [gate_filerep_start]
+      passed: [gate_compile_end]
     - get: gpdb_binary
       tags: ["ccp"]
       resource: bin_gpdb_centos6
-      passed: [gate_filerep_start]
+      passed: [gate_compile_end]
       trigger: true
     - get: ccp_src
       tags: ["ccp"]
@@ -3193,11 +3177,11 @@ jobs:
   - aggregate:
     - get: gpdb_src
       tags: ["ccp"]
-      passed: [gate_filerep_start]
+      passed: [gate_compile_end]
     - get: gpdb_binary
       tags: ["ccp"]
       resource: bin_gpdb_centos6
-      passed: [gate_filerep_start]
+      passed: [gate_compile_end]
       trigger: true
     - get: ccp_src
       tags: ["ccp"]
