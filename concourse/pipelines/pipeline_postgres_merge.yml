@@ -2748,11 +2748,11 @@ jobs:
       params:
         submodules:
         - gpMgmt/bin/pythonSrc/ext
-      passed: [gate_general_misc_start]
+      passed: [gate_compile_end]
     - get: gpdb_binary
       tags: ["ccp"]
       resource: bin_gpdb_centos6
-      passed: [gate_general_misc_start]
+      passed: [gate_compile_end]
       trigger: true
     - get: ccp_src
       tags: ["ccp"]
@@ -2784,10 +2784,10 @@ jobs:
   plan:
   - aggregate:
     - get: gpdb_src
-      passed: [gate_general_misc_start]
+      passed: [gate_compile_end]
       trigger: true
     - get: bin_gpdb
-      passed: [gate_general_misc_start]
+      passed: [gate_compile_end]
       resource: bin_gpdb_centos6
     - get: centos-gpdb-dev-6
   - task: memory-accounting
@@ -3011,25 +3011,21 @@ jobs:
   - aggregate:
     - get: gpdb_src
       passed:
-      - QP_memory-accounting
       - regression_tests_gpcloud_centos
       - regression_tests_gphdfs_centos
       - regression_tests_pxf_hdp_rpm
       - regression_tests_pxf_hdp_tar
       - regression_tests_pxf_cdh_rpm
       - regression_tests_pxf_cdh_tar
-      - MM_gpcheckcat
       trigger: true
     - get: bin_gpdb_centos6
       passed:
-      - QP_memory-accounting
       - regression_tests_gpcloud_centos
       - regression_tests_gphdfs_centos
       - regression_tests_pxf_hdp_rpm
       - regression_tests_pxf_hdp_tar
       - regression_tests_pxf_cdh_rpm
       - regression_tests_pxf_cdh_tar
-      - MM_gpcheckcat
       trigger: true
 ################ General Misc End
 
