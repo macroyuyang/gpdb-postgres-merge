@@ -678,7 +678,7 @@ debug_sleep_anchor: &debug_sleep
           tag: latest
       run:
         path: 'sh'
-        args: ['-c', 'sleep 6h']
+        args: ['-c', 'sleep 15m']
     ensure:
       <<: *ccp_destroy
 
@@ -2153,7 +2153,7 @@ jobs:
               tag: latest
           run:
             path: 'sh'
-            args: ['-c', 'sleep 6h']
+            args: ['-c', 'sleep 15m']
         ensure:
           <<: *ccp_destroy_2_cluster
   # Similar to the on_failure blocks, the final cleanup needs to be both clusters as well
@@ -2735,7 +2735,7 @@ jobs:
               tag: latest
           run:
             path: 'sh'
-            args: ['-c', 'sleep 6h']
+            args: ['-c', 'sleep 15m']
         ensure:
           <<: *ccp_destroy_2_cluster
   # Similar to the on_failure blocks, the final cleanup needs to be both clusters as well
