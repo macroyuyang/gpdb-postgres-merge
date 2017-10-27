@@ -2276,30 +2276,30 @@ jobs:
   - aggregate:
     - get: gpdb_src
       passed:
-      - gate_icw_end
+      - gate_compile_end
       trigger: true
     - get: bin_gpdb_centos6
       passed:
-      - gate_icw_end
+      - gate_compile_end
     - get: bin_gpdb_centos7
       passed:
-      - gate_icw_end
+      - gate_compile_end
     - get: bin_gpdb_sles11
       passed:
-      - gate_icw_end
+      - gate_compile_end
     # Not used by icw group, but is passed through
     - get: gpdb_src_tinc_tarball
       passed:
-      - gate_icw_end
+      - gate_compile_end
     - get: installer_rhel6_gpdb_rc
       passed:
-      - gate_icw_end
+      - gate_compile_end
     - get: qautils_rhel6_tarball
       passed:
-      - gate_icw_end
+      - gate_compile_end
     - get: gpdb_src_behave_tarball
       passed:
-      - gate_icw_end
+      - gate_compile_end
 - name: MM_gppkg
   plan:
   - aggregate:
